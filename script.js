@@ -2,27 +2,26 @@ const containerImg = document.getElementById('container-img');
 const prevBtn = document.getElementById('prev-btn');
 const nextBtn = document.getElementById('next-btn');
 
+currentPosition = 0;
 
-function nextImg100() {
-    containerImg.style.left = '-50%';
-     
-    nextImg150();
-}
+// prev img
+prevBtn.addEventListener('click', function() {
+    if(currentPosition == 2) {
+        containerImg.style.left = '-50%';
+        currentPosition = 1;
+    } else if (currentPosition == 1) {
+        containerImg.style.left = '0px';
+        currentPosition = 0;    
+    }
+});
 
-function nextImg150() {
-
-    nextBtn.addEventListener('click', function(){
-        containerImg.style.left = '-100%';
-    });
-}
-
-
-function prevImg() {
-    containerImg.style.left = '0px';
-
-}
-
-
-nextBtn.addEventListener('click', nextImg100);
-
-prevBtn.addEventListener('click', prevImg);
+// next img
+nextBtn.addEventListener('click', function() {
+    if(currentPosition == 0) {
+        containerImg.style.left = '-50%';
+        currentPosition++       
+    } else if (currentPosition == 1) {
+        containerImg.style.left = '-95%';  
+        currentPosition++  
+    }
+});
